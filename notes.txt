@@ -1,0 +1,11 @@
+bar chart for wins on left
+
+generate round on right
+
+pick winner after generating 
+
+Add a new player
+
+
+Eventual Features
+restore previous session button with localstorage
