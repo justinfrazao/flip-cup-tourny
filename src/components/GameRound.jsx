@@ -7,16 +7,19 @@ function GameRound(props) {
   const [teamTwo, setTeamTwo] = useState([]);
 
   const generateTeams = () => {
-    let m = props.players.length, arr = props.players, t, i;
-    while(m) {
-      i = Math.floor(Math.random() * m--);
-      t = arr[m];
-      arr[m] = arr[i];
-      arr[i] = t;
+    let i = 1, arr = [...props.players];
+    const tempTeam1 = [];
+    const tempTeam2 = [];
+
+    while (arr.length > 0) {
+      const random = Math.floor(Math.random() * arr.length);
+      i % 2 === 0 ? tempTeam1.push(arr[random]) : tempTeam2.push(arr[random]);
+      arr.splice(random, 1);
+      i++;
     }
-    const half = Math.ceil(props.players.length / 2);
-    setTeamOne(arr.slice(0, half));
-    setTeamTwo(arr.slice(-half));
+
+    setTeamOne(tempTeam1);
+    setTeamTwo(tempTeam2);
     setPlaying(true);
   };
 
